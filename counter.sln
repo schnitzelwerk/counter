@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "counter.Android", "counter\counter.Android\counter.Android.csproj", "{80DE461A-B854-4FF7-9415-93DFDBABFDDA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "counter", "counter\counter\counter.shproj", "{B8505F8B-EF14-4D57-8C25-CFE8C33F04B3}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		counter\counter\counter.projitems*{80de461a-b854-4ff7-9415-93dfdbabfdda}*SharedItemsImports = 4
+		counter\counter\counter.projitems*{b8505f8b-ef14-4d57-8c25-cfe8c33f04b3}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DE461A-B854-4FF7-9415-93DFDBABFDDA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {56D28645-197F-47A9-AFD8-DBC68F6CF2AC}
+	EndGlobalSection
+EndGlobal

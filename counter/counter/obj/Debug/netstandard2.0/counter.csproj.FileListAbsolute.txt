@@ -1,0 +1,6 @@
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\bin\Debug\netstandard2.0\counter.deps.json
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\bin\Debug\netstandard2.0\counter.dll
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\obj\Debug\netstandard2.0\counter.csprojAssemblyReference.cache
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\obj\Debug\netstandard2.0\counter.csproj.CoreCompileInputs.cache
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\obj\Debug\netstandard2.0\counter.AssemblyInfoInputs.cache
+C:\Users\Corny\Documents\Development\schnitzelwerk\counter\counter\counter\obj\Debug\netstandard2.0\counter.AssemblyInfo.cs

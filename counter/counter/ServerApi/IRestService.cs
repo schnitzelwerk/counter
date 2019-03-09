@@ -11,6 +11,8 @@ namespace counter
 
         Task<UInt32> Register();
 
+        Task PlaceOrder(Order newOrder);
 
+        Task<List<Order>> ReadStatus();
     }
 }

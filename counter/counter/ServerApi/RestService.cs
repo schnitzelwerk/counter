@@ -22,7 +22,7 @@ namespace counter
 
         public void configHttpClient()
         {
-            authData = string.Format("{0}:{1}", App.Settings.Username, App.Settings.Password);
+            authData = string.Format("{0}:{1}", App.ServerConfig.Username, App.ServerConfig.Password);
             authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
 
             client = new HttpClient();
@@ -34,7 +34,7 @@ namespace counter
         {
             List<Food> menuFoodList = new List<Food>();
 
-            var uri = new Uri(string.Format(App.Settings.RestUrl + "?cmd=getF", string.Empty));
+            var uri = new Uri(string.Format(App.ServerConfig.ServerUrl + "?cmd=getF", string.Empty));
 
             try
             {
@@ -55,7 +55,7 @@ namespace counter
 
         public async Task<UInt32> Register()
         {
-            var uri = new Uri(string.Format(App.Settings.RestUrl + "?cmd=addF", string.Empty));
+            var uri = new Uri(string.Format(App.ServerConfig.ServerUrl + "?cmd=addF", string.Empty));
 
             try
             {
@@ -84,6 +84,10 @@ namespace counter
                 Debug.WriteLine(@"				ERROR {0}", ex.Message);
             }
             return 0;
+        }
+        public async Task PlaceOrder(Order newOrder)
+        {
+            response = await client.PostAsync(uri, content);
         }
     }
 }

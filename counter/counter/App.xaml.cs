@@ -7,8 +7,14 @@ namespace counter
 {
 	public partial class App : Application
 	{
-		public App ()
+        public static ServerConfiguration ServerConfig;
+        public static RestService ServerAPI;
+
+        public App ()
 		{
+            ServerConfig = new ServerConfiguration();
+            ServerAPI = new RestService();
+
 			InitializeComponent();
 
 			MainPage = new MainPage();

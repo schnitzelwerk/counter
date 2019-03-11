@@ -6,10 +6,9 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-    	<Label Text="Schnitzelwerk" 
+        <Label Text="Schnitzelwerk" 
            HorizontalOptions="Center"
            VerticalOptions="CenterAndExpand" />
-        <Image Source="Ressource/burgercola.png" />
     </StackLayout>
 
 </ContentPage>

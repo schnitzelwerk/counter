@@ -34,7 +34,7 @@ namespace counter
         {
             List<Food> menuFoodList = new List<Food>();
 
-            var uri = new Uri(string.Format(App.ServerConfig.ServerUrl + "?cmd=getF", string.Empty));
+            var uri = new Uri(string.Format(App.ServerConfig.ServerUrl + "?cmd=getFood", string.Empty));
 
             try
             {
@@ -59,6 +59,7 @@ namespace counter
 
             try
             {
+                FoodItem item = new FoodItem();
                 var json = JsonConvert.SerializeObject(item);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -68,9 +69,9 @@ namespace counter
                 if (response.IsSuccessStatusCode)
                 {
                     var respContent = await response.Content.ReadAsStringAsync();
-                    var respItem = JsonConvert.DeserializeObject<FellowItem>(respContent);
-                    item.ID = respItem.ID;
-                    Fellows.Add(item);
+                    //var respItem = JsonConvert.DeserializeObject<FoodItem>(respContent);
+                    //item.ID = respItem.ID;
+                    //Fellows.Add(item);
                 }
                 
                 if (response.IsSuccessStatusCode)
@@ -85,9 +86,22 @@ namespace counter
             }
             return 0;
         }
+
         public async Task PlaceOrder(Order newOrder)
         {
-            response = await client.PostAsync(uri, content);
+            FoodItem item = new FoodItem();
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("localhost/webservice.php", content);
+        }
+
+        public async Task<List<Order>> ReadStatus()
+        {
+            FoodItem item = new FoodItem();
+            var json = JsonConvert.SerializeObject(item);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await client.PostAsync("localhost/webservice.php", content);
+            return new List<Order>();
         }
     }
 }

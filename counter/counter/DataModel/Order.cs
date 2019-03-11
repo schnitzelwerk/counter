@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace counter
 {
-    class Order
+    public class Order
     {
         UInt32 _Number;
         List<Food> Parts;

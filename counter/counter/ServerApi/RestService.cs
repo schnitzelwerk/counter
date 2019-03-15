@@ -27,18 +27,18 @@ namespace counter
 
             client = new HttpClient();
             client.MaxResponseContentBufferSize = 256000;
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
         }
 
         public async Task<List<Food>> GetFoodListAsync()
         {
             List<Food> menuFoodList = new List<Food>();
 
-            var uri = new Uri(string.Format(App.ServerConfig.ServerUrl + "?cmd=getFood", string.Empty));
+            var uri = new Uri("http://192.168.0.143/webservice.php?cmd=getFood");
 
             try
             {
-                var response = await client.GetAsync(uri);
+                var response = await client.GetAsync(uri, HttpCompletionOption.ResponseHeadersRead);
                 if (response.IsSuccessStatusCode)
                 {
                     var content = await response.Content.ReadAsStringAsync();

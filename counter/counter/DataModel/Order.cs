@@ -10,11 +10,11 @@ namespace counter
         UInt32 _Number;
         List<Food> Parts;
 
-        public float Price
+        public double Price
         {
             get
             {
-                float price = 0;
+                double price = 0;
                 foreach (Food food in Parts)
                 {
                     price += food.Price;

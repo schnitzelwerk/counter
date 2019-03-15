@@ -4,9 +4,15 @@ using System.Text;
 
 namespace counter
 {
-    class Ingredient
+    public class Ingredient
     {
         string Name;
-        float Price;
+        double Price;
+
+        public Ingredient()
+        {
+            Name = "";
+            Price = 0.0;
+        }
     }
 }

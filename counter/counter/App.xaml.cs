@@ -2,6 +2,8 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace counter
@@ -10,6 +12,7 @@ namespace counter
 	{
         public static ServerConfiguration ServerConfig;
         public static RestService ServerAPI;
+        public static DynamicMenu Menu;
 
         public App ()
 		{
@@ -21,10 +24,10 @@ namespace counter
 			MainPage = new MainPage();
 		}
 
-        protected override void OnStart()
+        protected async override void OnStart()
         {
             // Handle when your app starts
-		}
+        }
 
 		protected override void OnSleep ()
 		{

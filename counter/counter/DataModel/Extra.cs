@@ -4,12 +4,18 @@ using System.Text;
 
 namespace counter
 {
-    class Extra
+    public class Extra
     {
         private string _Name;
-        private float _Price;
+        private double _Price;
 
-        public float Price
+        public Extra()
+        {
+            _Name = "";
+            _Price = 0.0;
+        }
+
+        public double Price
         {
             get
             {

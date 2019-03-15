@@ -4,11 +4,4 @@
              xmlns:local="clr-namespace:counter"
              x:Class="counter.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Schnitzelwerk" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
-
 </ContentPage>

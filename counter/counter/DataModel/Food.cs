@@ -6,16 +6,24 @@ namespace counter
 {
     public class Food
     {
-        private string _Name;
-        private float _Price;
-        private List<Ingredient> _Ingredients = new List<Ingredient>();
-        private List<Extra> _Extras = new List<Extra>();
+        public string Name;
+        public double Price;
+        public List<string> Ingredients;
+        public List<string> Extras;
+
+        public Food()
+        {
+            Name = "";
+            Price = 0.0;
+            Ingredients = new List<string>();
+            Extras = new List<string>();
+        }
 
         public bool hasIngredients
         {
             get
             {
-                return _Ingredients.Count > 0;
+                return Ingredients.Count > 0;
             }
         }
 
@@ -23,18 +31,18 @@ namespace counter
         {
             get
             {
-                return _Extras.Count > 0;
+                return Extras.Count > 0;
             }
         }
 
-        public float Price
+        public double calcPrice
         {
             get
             {
-                float price = _Price;
-                foreach(Extra add in _Extras)
+                double price = Price;
+                foreach(string add in Extras)
                 {
-                    price += add.Price;
+                    //price += add.Price;
                 }
                 return price;
             }

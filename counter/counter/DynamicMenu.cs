@@ -7,16 +7,11 @@ namespace counter
 {
     public class DynamicMenu
     {
-        private List<Food> _Foods = new List<Food>();
+        private List<Food> _Foods;
 
-        public string ToJSON()
+        public DynamicMenu(List<Food> menu)
         {
-            return "";
-        }
-        public void FromJSON(string jsonStr)
-        {
-            var jsonData = JsonConvert.DeserializeObject(jsonStr);
-
+            _Foods = menu;
         }
 
         public List<Food> Foods

@@ -15,6 +15,20 @@ namespace counter
             _Price = 0.0;
         }
 
+        public Extra(string name, double price)
+        {
+            _Name = name;
+            _Price = price;
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+        }
+
         public double Price
         {
             get

@@ -13,6 +13,7 @@ namespace counter
         public static ServerConfiguration ServerConfig;
         public static RestService ServerAPI;
         public static DynamicMenu Menu;
+        public static List<Order> Orders = new List<Order>();
 
         public App ()
 		{

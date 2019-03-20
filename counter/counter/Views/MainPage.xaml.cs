@@ -23,7 +23,8 @@ namespace counter
             List<Food> menu;
             menu = await App.ServerAPI.GetFoodListAsync();
 
-            App.Menu = new DynamicMenu(menu);
+
+            App.Menu = new DynamicMenu(menu, new List<Ingredient>(), new List<Extra>());
 
             var grid = new Grid();
             int count = 0;
@@ -39,9 +40,10 @@ namespace counter
                 grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
             }
 
-            foreach(Food food in App.Menu.Foods)
+            foreach(Food meal in App.Menu.Meals)
             {
-                var tempObject = new Button { Text = food.Name };
+                var tempObject = new Button { Text = meal.Name };
+                tempObject.Clicked += addOrder;
                 grid.Children.Add(tempObject, column, row);
 
                 if (column < 2)
@@ -58,6 +60,22 @@ namespace counter
             }
             
             Content = grid;
+
+        }
+
+        private async void addOrder(object sender, EventArgs e)
+        {
+            Order currentOrder;
+            if (App.Orders.Any(O => O.State == OrderState.OPEN))
+            {
+                currentOrder = App.Orders.Find(O => O.State == OrderState.OPEN);
+            }
+            else
+            {
+                currentOrder = new Order();
+                App.Orders.Add(currentOrder);
+            }
+            currentOrder.Parts.Add(App.Menu.getCopyMealByName((sender as Button).Text));
 
         }
 

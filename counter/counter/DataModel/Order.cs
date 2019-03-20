@@ -5,17 +5,32 @@ using Newtonsoft.Json;
 
 namespace counter
 {
+    public enum OrderState
+    {
+        OPEN = 0,
+        CLOSED,
+        FINISHED
+    };
+
     public class Order
     {
         UInt32 _Number;
-        List<Food> Parts;
+        List<Food> _Parts;
+        OrderState _State;
+
+        public Order()
+        {
+            _Number = 0;
+            _Parts = new List<Food>();
+            _State = OrderState.OPEN;
+        }
 
         public double Price
         {
             get
             {
                 double price = 0;
-                foreach (Food food in Parts)
+                foreach (Food food in _Parts)
                 {
                     price += food.Price;
                 }
@@ -23,9 +38,30 @@ namespace counter
             }
         }
 
+        public void placeOrder(string name)
+        {
+            
+        }
+
+        public List<Food> Parts
+        {
+            get
+            {
+                return _Parts;
+            }
+        }
+
+        public OrderState State
+        {
+            get
+            {
+                return _State;
+            }
+        }
+
         public string Serialise()
         {
-            string jsonRepr = JsonConvert.SerializeObject(Parts);
+            string jsonRepr = JsonConvert.SerializeObject(_Parts);
             return jsonRepr;
         }
     }

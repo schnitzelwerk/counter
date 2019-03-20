@@ -14,6 +14,7 @@ namespace counter
         HttpClient client;
         String authData;
         String authHeaderValue;
+        bool isSessionOpened = false;
 
         public RestService()
         {
@@ -69,9 +70,7 @@ namespace counter
                 if (response.IsSuccessStatusCode)
                 {
                     var respContent = await response.Content.ReadAsStringAsync();
-                    //var respItem = JsonConvert.DeserializeObject<FoodItem>(respContent);
-                    //item.ID = respItem.ID;
-                    //Fellows.Add(item);
+                    
                 }
                 
                 if (response.IsSuccessStatusCode)

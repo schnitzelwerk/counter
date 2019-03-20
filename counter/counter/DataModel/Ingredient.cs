@@ -6,13 +6,35 @@ namespace counter
 {
     public class Ingredient
     {
-        string Name;
-        double Price;
+        private string _Name;
+        private double _Price;
 
         public Ingredient()
         {
-            Name = "";
-            Price = 0.0;
+            _Name = "";
+            _Price = 0.0;
+        }
+
+        public Ingredient(string name, double price)
+        {
+            _Name = name;
+            _Price = price;
+        }
+
+        public string Name
+        {
+            get
+            {
+                return _Name;
+            }
+        }
+
+        public double Price
+        {
+            get
+            {
+                return _Price;
+            }
         }
     }
 }

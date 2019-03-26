@@ -35,7 +35,7 @@ namespace counter
         {
             List<Food> menuFoodList = new List<Food>();
 
-            var uri = new Uri("http://192.168.0.143/webservice.php?cmd=getFood");
+            var uri = new Uri("http://192.168.123.134/webservice.php?cmd=getFood");
 
             try
             {

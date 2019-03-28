@@ -8,5 +8,10 @@
             <Setter Property="HeightRequest" Value="150" />
             <Setter Property="BorderColor" Value="Yellow" />
         </Style>
+        <Style x:Key="placeOrderButtonStyle" TargetType="Button">
+            <Setter Property="WidthRequest" Value="150" />
+            <Setter Property="HeightRequest" Value="150" />
+            <Setter Property="BackgroundColor" Value="Green" />
+        </Style>
     </Application.Resources>
 </Application>

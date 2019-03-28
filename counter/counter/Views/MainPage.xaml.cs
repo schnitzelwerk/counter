@@ -11,6 +11,7 @@ namespace counter
 	public partial class MainPage : ContentPage
 	{
         Order currentOrder;
+        Label currentPrice;
         ListView orderListView;
 
         public MainPage()
@@ -27,20 +28,20 @@ namespace counter
                 App.Orders.Add(currentOrder);
             }
             orderListView = new ListView();
+            currentPrice = new Label { Text = "0.0€" };
         }
 
         protected async override void OnAppearing()
         {
             base.OnAppearing();
 
+            var grid = new Grid();
+            Content = grid;
+
             List<Food> menu;
-
             menu = await App.ServerAPI.GetFoodListAsync();
-
-
             App.Menu = new DynamicMenu(menu, new List<Ingredient>(), new List<Extra>());
 
-            var grid = new Grid();
             int size = 4;
             int count = 0;
             int row = 0;
@@ -59,7 +60,7 @@ namespace counter
             {
                 var tempObject = new Button { Text = meal.Name };
                 tempObject.Clicked += addOrder;
-                tempObject.Style = (Style) Application.Current.Resources["foodButtonStyle"];
+                tempObject.Style = (Style)Application.Current.Resources["foodButtonStyle"];
                 grid.Children.Add(tempObject, column, row);
 
                 if (column < 2)
@@ -75,35 +76,40 @@ namespace counter
                 count++;
             }
 
-            Content = grid;
-
+            // Current Order List and Controls
             grid.Children.Add(new Label() { Text = "Current Order" }, size - 1, 0);
 
-            DataTemplate dT = new DataTemplate(typeof (TextCell));
+            DataTemplate dT = new DataTemplate(typeof(TextCell));
             dT.SetBinding(TextCell.TextProperty, "Name");
-            //{
-            //    Grid ingrid = new Grid();
-            //    Label nameLabel = new Label() { FontSize = 9};
-            //    nameLabel.BindingContext = ;
-            //    nameLabel.SetBinding(Label.TextProperty, "Name");
-            //    ingrid.Children.Add(nameLabel);
-            //    return new ViewCell { View = ingrid };
-            //});
-            
+
             orderListView.ItemTemplate = dT;
             orderListView.ItemsSource = currentOrder.Parts;
-            
-            grid.Children.Add( orderListView, size-1, 1);
-            Grid.SetRowSpan(orderListView, 3);
+
+            grid.Children.Add(orderListView, size - 1, 1);
+            Grid.SetRowSpan(orderListView, size - 3);
+
+            grid.Children.Add(currentPrice, size-1, size-2);
+
+            var placeOrderButton = new Button { Text = "Place Order" };
+            placeOrderButton.Clicked += placeOrder;
+            placeOrderButton.Style = (Style)Application.Current.Resources["placeOrderButtonStyle"];
+            grid.Children.Add(placeOrderButton, size - 1, size - 1);
         }
 
 
         private async void addOrder(object sender, EventArgs e)
         {
-            currentOrder.Parts.Add(App.Menu.getCopyMealByName((sender as Button).Text));
-
+            orderListView.BeginRefresh();
+            currentOrder.Parts.Insert(0, App.Menu.getCopyMealByName((sender as Button).Text));
             orderListView.ItemsSource = null;
             orderListView.ItemsSource = currentOrder.Parts;
+            currentPrice.Text = currentOrder.Price.ToString() + "€";
+            orderListView.EndRefresh();
+        }
+
+        private async void placeOrder(object sender, EventArgs e)
+        {
+
         }
 
     }
